@@ -1,3 +1,12 @@
+/*
+Steps:
+
+1. Start with any node (here: 0)
+2. Always take the cheapest edge that connects:
+    A node in MST → A node not in MST
+3. Repeat until all nodes are included
+*/
+
 class Solution {
 public:
     int prims(int n, vector<vector<int>>& edges) {
@@ -47,14 +56,29 @@ public:
     }
 };
 
-
 /*
-Steps:
+🅐 Prim’s using Min-Heap (Priority Queue) (Most used in interviews) used for All graphs
 
-1. Start with any node (here: 0)
-2. Always take the cheapest edge that connects:
-    A node in MST → A node not in MST
-3. Repeat until all nodes are included
+Data structure used:
+Min-heap + Adjacency list
+
+⏱ Time Complexity
+
+Remove/insert from heap for each edge: O(ElogV)
+	​
+
+💾 Space Complexity
+
+We store:
+
+Adjacency list → O(E)
+
+Heap → O(V)
+
+Visited array → O(V)
+
+O(E+V)
+
 */
 
 /*

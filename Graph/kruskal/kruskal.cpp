@@ -1,3 +1,15 @@
+/*
+
+Steps:
+
+1. Sort all edges in increasing order of weight.
+2. Pick the smallest edge first.
+3. Add it only if it does NOT create a cycle.
+4. Use DSU (Union-Find) to quickly check cycle.
+5. Stop after using n − 1 edges.
+
+*/
+
 class DSU {
 public:
     vector<int> parent, rankv;
@@ -63,20 +75,35 @@ public:
         return mstWeight;
     }
 };
+
 /*
+Let:
 
-Steps:
+V = number of vertices
 
-Sort all edges in increasing order of weight.
+E = number of edges
 
-Pick the smallest edge first.
+⏱ Time Complexity
 
-Add it only if it does NOT create a cycle.
+Main steps in Kruskal:
 
-Use DSU (Union-Find) to quickly check cycle.
+Sort all edges: O(E log E)
+DSU operations (union/find) for each edge: O(E α(V)) ≈ O(E)   (α is inverse Ackermann – almost constant)
 
-Stop after using n − 1 edges.
+✅ Final Time Complexity: O(ElogE)
+	
+Since E ≈ V², sometimes written as:  O(ElogV)
 
+
+💾 Space Complexity
+
+We store:
+
+Edge list → O(E)
+
+Parent & Rank arrays (DSU) → O(V)
+
+O(E+V)
 */
 
 /*

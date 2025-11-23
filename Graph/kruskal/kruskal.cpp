@@ -46,6 +46,9 @@ public:
     }
 };
 
+// a,b, wt
+// a1,b1,wt1
+
 class Solution {
 public:
     int kruskal(int n, vector<vector<int>>& edges) {

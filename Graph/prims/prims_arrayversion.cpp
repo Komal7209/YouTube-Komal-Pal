@@ -34,6 +34,7 @@ Steps:
 #include <bits/stdc++.h>
 using namespace std;
 
+
 int primsMST(vector<vector<int>>& graph) {
     int V = graph.size();
     
@@ -84,6 +85,7 @@ int primsMST(vector<vector<int>>& graph) {
 🅑 Prim’s using Adjacency Matrix (Basic version)
 
 No heap, just array scanning.
+Here V is number of nodes
 
 ⏱ Time Complexity: O(V^2)
 	

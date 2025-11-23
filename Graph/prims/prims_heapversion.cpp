@@ -7,6 +7,10 @@ Steps:
 3. Repeat until all nodes are included
 */
 
+// 1 -> 2(1),3(3),4(2)
+// 1-> 2(1)
+// 1-> 4(2)
+
 class Solution {
 public:
     int prims(int n, vector<vector<int>>& edges) {

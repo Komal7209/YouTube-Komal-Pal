@@ -28,7 +28,7 @@ public:
         if (i == wt.size() || W == 0)
             return 0;
 
-        int notTake = solve(i + 1, W, wt, val);
+        int notTake = solve W, wt, val);(i + 1,
 
         int take = 0;
         if (wt[i] <= W) {

@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+vector<vector<string>> wordCountEngine(const string& document) {
+    unordered_map<string, int> freq;
+    unordered_map<string, int> order;
+    vector<string> words;
+
+    string temp;
+    int index = 0;
+
+    // Step 1: parse words
+    for (char c : document) {
+        if (isalpha(c)) {
+            temp.push_back(tolower(c));
+        } else {
+            if (c == '\'' || c == '-' || c == '_') continue;
+            if (!temp.empty()) {
+                if (freq.find(temp) == freq.end()) {
+                    order[temp] = index++;
+                    words.push_back(temp);
+                }
+                freq[temp]++;
+                temp.clear();
+            }
+        }
+    }
+
+    // last word
+    if (!temp.empty()) {
+        if (freq.find(temp) == freq.end()) {
+            order[temp] = index++;
+            words.push_back(temp);
+        }
+        freq[temp]++;
+    }
+
+    // Step 2: sort
+    sort(words.begin(), words.end(), [&](string &a, string &b) {
+        if (freq[a] != freq[b])
+            return freq[a] > freq[b];   // higher freq first
+        return order[a] < order[b];     // earlier appearance first
+    });
+
+    // Step 3: build result
+    vector<vector<string>> result;
+    for (string &w : words) {
+        result.push_back({w, to_string(freq[w])});
+    }
+
+    return result;
+}
+
+int main() {
+
+  string document;
+  cin>>document;
+  return 0;
+}
